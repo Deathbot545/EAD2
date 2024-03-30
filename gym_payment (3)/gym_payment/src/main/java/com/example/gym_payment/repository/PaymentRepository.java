@@ -1,6 +1,6 @@
-package com.example.payment.repository;
+package com.example.gym_payment.repository;
 
-import com.example.payment.entity.Payment;
+import com.example.gym_payment.entity.Payment;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

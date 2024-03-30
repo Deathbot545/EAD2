@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import "./RegisterPage.scss";
 import { registerBannerImage } from "../../constants/assets";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Input from "../../components/Input";
 import axios from 'axios';
 
@@ -18,6 +18,8 @@ function RegisterPage() {
     // confirmPassword: '' // Assuming you handle confirmation validation client-side
   });
 
+  const [loginError, setLoginError] = useState('');
+  const navigate = useNavigate(); // Initialize useNavigate
   const handleChange = (e) => {
     const { name, value } = e.target; // Get name and value from the event target (input field)
     setFormData(prevState => ({
@@ -28,20 +30,32 @@ function RegisterPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault(); // Prevent the form from causing a page reload
-
-    // Here, implement any front-end validation if necessary
-    console.log("Form data being sent to the server:", formData);
-
+  
     try {
-      // Adjust the URL to your API endpoint
-      const response = await axios.post('http://localhost:8086/member/save', formData);
-      console.log("Response from the server:", response.data);
-      // Handle success - e.g., showing a success message or redirecting the user
+      // Attempt to register the user
+      const registerResponse = await axios.post('http://localhost:8086/member/save', formData);
+      console.log("Registration successful:", registerResponse.data);
+  
+      // If registration is successful, attempt to log in
+      const { email, password } = formData; // Use the same credentials for login
+      const loginResponse = await axios.post('http://localhost:8086/member/login1', { email, password });
+  
+      if(loginResponse.data.status) {
+        console.log("Login successful:", loginResponse.data);
+        // Save token to sessionStorage
+        sessionStorage.setItem('authToken', loginResponse.data.token);
+        // Navigate to Payment page on successful login
+        navigate('/payment');
+      } else {
+        setLoginError(loginResponse.data.message); // Set login error message if login fails
+      }
     } catch (error) {
-      console.error('Failed to register:', error);
-      // Handle error - e.g., showing an error message
+      console.error('Registration or login failed:', error);
+      // Set a general login error message
+      setLoginError("An error occurred during registration or login.");
     }
   };
+  
 
   return (
     <div className="container-fluid p-0 m-0 RegisterPage__wrapper">

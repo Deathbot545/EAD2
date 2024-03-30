@@ -1,7 +1,9 @@
 package com.example.Fittness.controller;
 
+import com.example.Fittness.data.InstructorAssignmentDTO;
 import com.example.Fittness.data.LoginData;
 import com.example.Fittness.data.ProgressData;
+import com.example.Fittness.entity.Member;
 import com.example.Fittness.response.loginResponse;
 import com.example.Fittness.service.MemberService;
 import com.example.Fittness.data.MemberData;
@@ -11,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/member")
@@ -38,6 +41,29 @@ public class MemberController {
         ProgressData addedProgress = progressService.addProgress(progressData);
         return ResponseEntity.ok(addedProgress);
     }
+
+
+    @PutMapping("/{memberId}/instructor")
+    public ResponseEntity<String> updateMemberInstructor(@PathVariable Long memberId, @RequestBody InstructorAssignmentDTO assignmentDTO) {
+        Long instructorId = assignmentDTO.getInstructorId();
+        Member updatedMember = memberService.updateMemberInstructor(memberId, instructorId);
+        if (updatedMember != null) {
+            return ResponseEntity.ok("Instructor updated successfully.");
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @GetMapping("/{memberId}")
+    public ResponseEntity<Member> getMemberById(@PathVariable Long memberId) {
+        Optional<Member> memberOptional = memberService.getMemberById(memberId);
+        if (memberOptional.isPresent()) {
+            return ResponseEntity.ok(memberOptional.get());
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
 
     @GetMapping("/progress/{progressId}")
     public ResponseEntity<ProgressData> getProgressById(@PathVariable Long progressId) {

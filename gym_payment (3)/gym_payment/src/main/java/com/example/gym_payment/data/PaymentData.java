@@ -1,25 +1,23 @@
-package com.example.payment.data;
-
-import java.util.Date;
+package com.example.gym_payment.data;
 
 public class PaymentData {
     private int paymentId;
     private Long memberId;
     private String timePhase;
     private String membershipType;
-    private byte[] paymentSlip;
+
 
     // Constructors, getters, and setters
 
     public PaymentData() {
     }
 
-    public PaymentData(int paymentId, Long memberId, String timePhase, String membershipType, byte[] paymentSlip) {
+    public PaymentData(int paymentId, Long memberId, String timePhase, String membershipType) {
         this.paymentId = paymentId;
         this.memberId = memberId;
         this.timePhase = timePhase;
         this.membershipType = membershipType;
-        this.paymentSlip = paymentSlip;
+
     }
 
     public int getPaymentId() {
@@ -54,12 +52,5 @@ public class PaymentData {
         this.membershipType = membershipType;
     }
 
-    public byte[] getPaymentSlip() {
-        return paymentSlip;
-    }
 
-    public void setPaymentSlip(byte[] paymentSlip) {
-        this.paymentSlip = paymentSlip;
-    }
 }
-

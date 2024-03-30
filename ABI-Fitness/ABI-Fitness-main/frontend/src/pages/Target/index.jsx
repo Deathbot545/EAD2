@@ -20,6 +20,10 @@ export default function Target() {
     const decodedToken = jwtDecode(authToken);
     const memberId = decodedToken.sub; // Assuming 'sub' contains the member ID
 
+    // After decoding the token, log the decoded token to verify its structure
+console.log(decodedToken);
+console.log(authToken);
+
     try {
       const response = await fetch('http://localhost:8086/target', {
         method: 'POST',

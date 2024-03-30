@@ -29,7 +29,7 @@ function LoginPage() {
         // Save token to sessionStorage
         sessionStorage.setItem('authToken', response.data.token);
         // Navigate to Dashboard page on success
-        navigate('/dashboard');
+        navigate('/Dashboard');
       } else {
         setLoginError(response.data.message); // Set login error message
       }
@@ -38,7 +38,6 @@ function LoginPage() {
       setLoginError("An error occurred during login."); // Set a general login error message
     }
 };
-
 
   return (
     <div className="container-fluid p-0 m-0 LoginPage__wrapper">

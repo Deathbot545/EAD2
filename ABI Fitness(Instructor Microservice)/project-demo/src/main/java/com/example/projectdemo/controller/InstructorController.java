@@ -3,9 +3,11 @@ package com.example.projectdemo.controller;
 import com.example.projectdemo.data.Instructor;
 import com.example.projectdemo.service.InstructorService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @RestController
@@ -26,6 +28,13 @@ public class InstructorController {
     @GetMapping("/name/{name}")
     public Instructor getInstructorByName(@PathVariable String name) {
         return instructorService.getInstructorByName(name);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Instructor> getInstructorById(@PathVariable Long id) {
+        Optional<Instructor> instructor = instructorService.getInstructorById(id);
+        return instructor.map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     // Delete instructor by name

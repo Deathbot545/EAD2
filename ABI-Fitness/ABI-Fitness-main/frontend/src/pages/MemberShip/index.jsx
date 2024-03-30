@@ -1,112 +1,84 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { jwtDecode } from 'jwt-decode'; // Make sure jwt-decode is imported
 import "./MemberShip.scss";
 import MainLayout from "../../layouts/MainLayout";
-import { jwtDecode } from 'jwt-decode';
+import Input from "../../components/Input";
 
 export default function MemberShip() {
-  const [instructors, setInstructors] = useState([]);
-  const [membershipType, setMembershipType] = useState("");
-  const [timePhase, setTimePhase] = useState("");
-  const [paymentSlip, setPaymentSlip] = useState(null);
+  const [instructorName, setInstructorName] = useState('');
+  const [membershipType, setMembershipType] = useState(''); // Added state for membership type
+  const [timePhase, setTimePhase] = useState(''); // Added state for time phase
 
   useEffect(() => {
-    const fetchInstructors = async () => {
+    const fetchMemberAndPaymentDetails = async () => {
+      const authToken = sessionStorage.getItem('authToken');
+      if (!authToken) {
+        console.error("You must be logged in.");
+        return;
+      }
+  
+      const decodedToken = jwtDecode(authToken);
+      const memberId = decodedToken.sub; // Assuming 'sub' contains the member ID
+  
       try {
-        const response = await axios.get('http://localhost:8081/project-demo/instructors');
-        setInstructors(response.data);
+        // Fetch the member details including the instructor ID
+        const memberResponse = await axios.get(`http://localhost:8086/member/${memberId}`);
+        if (memberResponse.data.instructorId) {
+          const instructorResponse = await axios.get(`http://localhost:8081/project-demo/instructors/${memberResponse.data.instructorId}`);
+          setInstructorName(instructorResponse.data.name); // Display instructor's name
+        }
+  
+        // Fetch the latest payment details for the member to get membership type and time phase
+        const paymentResponse = await axios.get(`http://localhost:8088/payments/member/${memberId}`);
+        if (paymentResponse.data.length > 0) {
+          const latestPayment = paymentResponse.data[0]; // Assuming you want the latest payment
+          setMembershipType(latestPayment.membershipType);
+          setTimePhase(latestPayment.timePhase);
+        } else {
+          console.log("No payment information found for member.");
+          setMembershipType('N/A');
+          setTimePhase('N/A');
+        }
       } catch (error) {
-        console.error("Failed to fetch instructors:", error);
+        console.error("Failed to fetch member or payment details:", error);
       }
     };
-    fetchInstructors();
+  
+    fetchMemberAndPaymentDetails();
   }, []);
+  
 
-  const handleFileChange = (e) => {
-    setPaymentSlip(e.target.files[0]);
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault(); // Prevent form from refreshing the page
-  
-    // Retrieve token from session storage
-    const authToken = sessionStorage.getItem('authToken');
-  
-    // Decode the token to get the member ID
-    const decodedToken = jwtDecode(authToken);
-    const memberId = decodedToken.sub;
-  
-    const formData = new FormData();
-    formData.append("memberId", memberId); // Set member ID from token
-    formData.append("membershipType", membershipType);
-    formData.append("paymentSlip", paymentSlip);
-  
-    try {
-      await axios.post('http://localhost:8085/payments/process', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
-      });
-      alert('Payment processed successfully');
-    } catch (error) {
-      console.error("Failed to process payment:", error);
-    }
-  };
-  
   return (
     <MainLayout>
-      <form className="container MemberShip__wrapper" onSubmit={handleSubmit}>
+      <div className="container MemberShip__wrapper">
         <h1>My Membership</h1>
         <div className="membership">
           <div className="card">
             <div className="card-body">
-              {/* Membership Type Input */}
               <section>
                 <span>Membership Type :</span>
-                <input
-                  type="text"
-                  value={membershipType}
-                  onChange={(e) => setMembershipType(e.target.value)}
-                />
+                <div className="membership__input">
+                  <Input value={membershipType} readOnly />
+                </div>
               </section>
-
-              {/* Time Phase Input */}
               <section>
                 <span>Time Phase :</span>
-                <input
-                  type="text"
-                  value={timePhase}
-                  onChange={(e) => setTimePhase(e.target.value)}
-                />
+                <div className="membership__input">
+                  <Input value={timePhase} readOnly />
+                </div>
               </section>
-
-              {/* Instructors Dropdown */}
               <section>
                 <span>Instructor :</span>
-                <select onChange={(e) => console.log(`Instructor ID: ${e.target.value}`)}>
-                  <option value="">Select Instructor</option>
-                  {instructors.map((instructor) => (
-                    <option key={instructor.id} value={instructor.id}>
-                      {instructor.name}
-                    </option>
-                  ))}
-                </select>
+                <div className="membership__input">
+                  <Input value={instructorName} readOnly />
+                </div>
               </section>
-
-              {/* Payment Slip Upload */}
-              <section>
-                <span>Payment Slip :</span>
-                <input
-                  type="file"
-                  onChange={handleFileChange}
-                />
-              </section>
-
-              <button type="submit">Update Membership</button>
             </div>
+            <h4>Next payment due in 6 months and 23 days. <button>Update Membership</button></h4>
           </div>
         </div>
-      </form>
+      </div>
     </MainLayout>
   );
 }

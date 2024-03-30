@@ -11,6 +11,7 @@ import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import io.micrometer.common.util.StringUtils;
+import jakarta.persistence.EntityNotFoundException;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -101,6 +102,23 @@ public class MemberServiceImp  implements MemberService {
                 .signWith(key)
                 .compact();
     }
+
+
+    public Member updateMemberInstructor(Long memberId, Long instructorId) {
+        Optional<Member> memberOptional = memberRepository.findById(String.valueOf(memberId)); // Directly use Long type
+        if (memberOptional.isPresent()) {
+            Member member = memberOptional.get();
+            member.setInstructorId(instructorId);
+            return memberRepository.save(member);
+        } else {
+            throw new EntityNotFoundException("Member not found with ID: " + memberId);
+        }
+    }
+
+
+        public Optional<Member> getMemberById(Long memberId) {
+            return memberRepository.findById(String.valueOf(memberId));
+        }
 
 
 

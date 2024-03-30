@@ -25,6 +25,9 @@ public class Member {
     private Float height;
     private Integer age;
 
+    @Column(name = "instructor_id", nullable = true) // This allows the instructorId to be null
+    private Long instructorId;
+
     public Member() {
         super();
     }
@@ -38,6 +41,7 @@ public class Member {
         this.gender = gender;
         this.weight = weight;
         this.height = height;
+        this.instructorId = instructorId;
     }
 
     public Long getId() {
@@ -110,5 +114,12 @@ public class Member {
     public void setAge(Integer age) {
         this.age = age;}
 
+    public Long getInstructorId() {
+        return instructorId;
+    }
+
+    public void setInstructorId(Long instructorId) {
+        this.instructorId = instructorId;
+    }
 
 }

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class InstructorService {
@@ -18,6 +19,9 @@ public class InstructorService {
         return instructorRepository.findAll();
     }
 
+    public Optional<Instructor> getInstructorById(Long id) {
+        return instructorRepository.findById(Math.toIntExact(id));
+    }
     // Get instructor by Name
     public Instructor getInstructorByName(String name) {
         return instructorRepository.findInstructorByName(name);
