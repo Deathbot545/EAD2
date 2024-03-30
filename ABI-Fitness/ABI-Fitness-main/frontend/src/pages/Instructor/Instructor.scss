@@ -1,0 +1,50 @@
+.Instructor__wrapper {
+    .Instructor__header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        h1 {
+            color: #0c396e;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        .Instructor__header__search {
+            width: 35%;
+        }
+    }
+    .card {
+        width: 100%;
+        margin-bottom: 2rem;
+        overflow: hidden;
+        .Instructor {
+            width: 100%;
+            aspect-ratio: 16/9;
+            object-fit: cover;
+        }
+        .card-body {
+            small {
+                color: #6941c6;
+                font-weight: 700;
+            }
+            .name {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                text-decoration: none;
+                h4 {
+                    font-weight: 800;
+                    color: #101828;
+                }
+            }
+            button {
+                background-color: transparent;
+                border: none;
+                outline: none;
+                color: #696969;
+                font-size: 20px;
+                font-weight: 700;
+                text-decoration: underline;
+            }
+        }
+    }
+}

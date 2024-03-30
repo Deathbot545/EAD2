@@ -1,0 +1,79 @@
+.MemberShip__wrapper {
+    h1 {
+        color: #0c396e;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+    .membership {
+        .card {
+            border: 1px solid #000;
+            background-color: transparent;
+            margin-bottom: 10rem;
+            .card-body {
+                background-color: transparent;
+                section {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 90%;
+                    overflow: hidden;
+                    .memership__input {
+                        width: 70%;
+                    }
+                    span {
+                        width: 30%;
+                        font-size: 20px;
+                        font-weight: 600;
+                    }
+                }
+            }
+            h4 {
+                margin-left: 1rem;
+                color: #696969;
+                button {
+                    color: #696969;
+                    font-weight: 800;
+                    border: 0;
+                    outline: none;
+                    background-color: transparent;
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .membership {
+        .card {
+            .card-body {
+                section {
+                    width: 100%;
+                }
+            }
+            h4 {
+                font-size: 20px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .membership {
+        .card {
+            .card-body {
+                section {
+                    width: 100%;
+                    overflow: visible;
+                }
+                span {
+                    width: 420px;
+                    font-size: 18px;
+                }
+            }
+            h4 {
+                font-size: 16px;
+            }
+        }
+    }
+}

@@ -1,0 +1,173 @@
+.Dashboard__wrapper {
+    .Dashboard__chart__side {
+        small {
+            color: #334151;
+            font-weight: 700;
+        }
+        ul {
+            margin: 1rem 0;
+            list-style: none;
+            li {
+                color: #334151;
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                font-weight: 700;
+                font-size: 14px;
+            }
+        }
+        .card {
+            .card-header {
+                background-color: transparent;
+                border: none;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                h5 {
+                    font-weight: 900;
+                }
+                ul {
+                    display: flex;
+                    align-items: center;
+                    li {
+                        .filter__options {
+                            background-color: transparent;
+                            border: none;
+                            color: #71717a;
+                            font-weight: 800;
+                            padding: 0.2rem;
+                            margin: 0 0.2rem;
+                            font-size: 11px;
+                            &.active {
+                                border-radius: 5px;
+                                border: 1px solid #71717a;
+                                color: #000000;
+                                font-weight: 900;
+                            }
+                        }
+                    }
+                }
+                button {
+                    border-radius: 5px;
+                    border: 1px solid #71717a;
+                    color: #000000;
+                    padding: 0.2rem;
+                    font-weight: 900;
+                    background-color: transparent;
+                    display: flex;
+                    align-items: center;
+                    font-size: 11px;
+                }
+            }
+        }
+    }
+    .Dashboard__bar__side {
+        &.user {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            h5 {
+                font-size: 16px;
+                color: #18181b;
+                font-weight: 900;
+                span {
+                    color: #71717a;
+                    font-weight: 500;
+                }
+            }
+        }
+        .header__part {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            span {
+                font-size: 12px;
+                font-weight: 900;
+            }
+        }
+        .bars__warpper {
+            width: 100%;
+            .bar__wrapper {
+                width: 100%;
+                margin: 3.1rem 0;
+                .bar__wrapper__header {
+                    width: 100%;
+
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    small {
+                        color: #18181b;
+                        font-weight: 700;
+                    }
+                }
+                .bar {
+                    height: 5px;
+                    border-radius: 5px;
+                    overflow: hidden;
+                    .progress {
+                        height: 5px;
+                        border-radius: 5px;
+                        background-color: #4f46e5;
+                        @for $i from 1 through 100 {
+                            &[data-progress="#{$i}"] {
+                                width: $i * 1%;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1040; // Ensure it covers the screen but is below modal content
+  }
+  
+  .modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    z-index: 1050; // Above the backdrop
+    position: relative;
+  }
+  .modal-close-x {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    cursor: pointer;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .open-progress-form-btn {
+    background-color: #6941c6; // A purple color to match the borderColor of your chart
+    color: white; // White text for contrast
+    padding: 10px 20px; // Some padding for better dimensions
+    border: none; // Remove default border
+    border-radius: 5px; // Rounded corners
+    font-weight: bold; // Make the text bold
+    cursor: pointer; // Cursor pointer to indicate it's clickable
+    transition: background-color 0.3s; // Smooth background color transition on hover
+  
+    &:hover {
+      background-color: #5a37b7; // A slightly darker purple on hover
+    }
+  
+    &:focus {
+      outline: none; // Remove outline on focus for cleaner look
+      box-shadow: 0 0 0 2px rgba(105, 65, 198, 0.5); // Add a soft glow effect on focus
+    }
+  }
+  
+  

@@ -1,0 +1,116 @@
+.RegisterPage__wrapper {
+    width: 100vw;
+    min-height: 100vh;
+    max-height: 100vh;
+    overflow: auto;
+    .RegisterPage__banner {
+        overflow: hidden;
+        img {
+            width: 100%;
+            min-height: 100vh;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+    .RegisterPage__form__area {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        flex-direction: column;
+        .RegisterPage__form__area__form__wrapper {
+            width: 90%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            .RegisterPage__form__area__form__headers {
+                text-align: center;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                h1 {
+                    color: #0c396e;
+                    font-weight: 900;
+                    font-size: 60px;
+                    display: block;
+                    margin-bottom: -1rem;
+                }
+                small {
+                    color: #696969;
+                }
+            }
+            .RegisterPage__form__area__form {
+                width: 90%;
+                .form-column {
+                    margin: 0;
+                    padding: 0 0.25rem;
+                }
+            }
+            button {
+                width: 90%;
+                margin-top: 1rem;
+                padding: 0.75rem;
+                background-color: #0c396e;
+                color: #fff;
+                border: none;
+                border-radius: 10px;
+            }
+            a {
+                margin-right: 2rem;
+                align-self: flex-end;
+                font-size: 15px;
+                color: #696969;
+            }
+        }
+        p {
+            color: #696969;
+            a {
+                color: #696969;
+                font-weight: 800;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .RegisterPage__wrapper {
+        .RegisterPage__banner {
+            display: none;
+        }
+    }
+}
+@media screen and (max-width: 460px) {
+    .RegisterPage__wrapper {
+        overflow: auto;
+        .RegisterPage__form__area {
+            .RegisterPage__form__area__form__wrapper {
+                width: 90%;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+                .RegisterPage__form__area__form__headers {
+                    h1 {
+                        font-size: 40px;
+                        margin-bottom: -0.75rem;
+                    }
+                }
+                .RegisterPage__form__area__form {
+                    width: 100%;
+                    .form-column {
+                        padding: 0;
+                    }
+                }
+                button {
+                    width: 100%;
+                    margin: 1rem 0;
+                }
+            }
+        }
+    }
+}

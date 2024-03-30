@@ -1,0 +1,26 @@
+.AboutUs {
+    h5,
+    p {
+        color: #001125;
+        font-size: 16px;
+        font-weight: 500;
+        font-family: "Koulen", sans-serif;
+        font-style: normal;
+    }
+    h5 {
+        font-size: 20px;
+    }
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .AboutUs {
+        img {
+            display: none;
+        }
+    }
+}

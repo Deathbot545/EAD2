@@ -1,0 +1,172 @@
+.Payment__wrapper {
+    min-height: 100vh;
+    max-height: 100vh;
+    overflow: hidden;
+    background-image: url("../../assets/images/PaymentsBackgrounnd.png");
+    background-position: center center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .Payment__content {
+        .Payment__content__heading__wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            img {
+                mix-blend-mode: darken;
+            }
+            h1 {
+                color: #0c396e;
+                font-weight: 500;
+                font-size: 60px;
+                display: block;
+                margin-bottom: -1rem;
+            }
+            small {
+                color: #696969;
+            }
+        }
+        .payment__card {
+            border: 1px solid #000;
+            background-color: transparent;
+            min-width: 1000px;
+            height: 100%;
+            overflow: hidden;
+            margin-top: 2rem;
+            padding: 0;
+            border-radius: 10px;
+
+            .card-body {
+                background-color: transparent;
+                .payment__card__left {
+                    img {
+                        mix-blend-mode: darken;
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                }
+                span {
+                    font-size: 16px;
+                    color: #323232;
+                    font-weight: 800;
+                }
+                h3 {
+                    font-weight: 900;
+                    color: #0c396e;
+                    font-size: 50px;
+                    margin-bottom: 2rem;
+                }
+                .payment__card__terms {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    p {
+                        padding-top: 0.4rem;
+                        margin-top: 0.7rem;
+                        font-weight: 800;
+                        font-size: 14px;
+                        a {
+                            color: #0c396e;
+                        }
+                    }
+                }
+                .form__submit {
+                    width: 100%;
+                    margin-top: 1rem;
+                    padding: 0.75rem;
+                    background-color: #0c396e;
+                    color: #fff;
+                    border: none;
+                    border-radius: 10px;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .Payment__wrapper {
+        .Payment__content {
+            .Payment__content__heading__wrapper {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                img {
+                    mix-blend-mode: darken;
+                }
+                h1 {
+                    color: #0c396e;
+                    font-weight: 500;
+                    font-size: 60px;
+                    display: block;
+                    margin-bottom: -1rem;
+                }
+                small {
+                    color: #696969;
+                }
+            }
+            .payment__card {
+                min-width: 90%;
+
+                .card-body {
+                    background-color: transparent;
+                    .payment__card__left {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .Payment__wrapper {
+        .Payment__content {
+            .Payment__content__heading__wrapper {
+                h1 {
+                    font-size: 40px;
+                    margin-bottom: -0.75rem;
+                }
+                small {
+                    color: #696969;
+                }
+            }
+            .payment__card {
+                .card-body {
+                    span {
+                        font-size: 12px;
+                    }
+                    h3 {
+                        font-size: 30px;
+                    }
+                    .payment__card__terms {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        p {
+                            padding-top: 0.4rem;
+                            margin-top: 0.7rem;
+                            font-weight: 800;
+                            font-size: 14px;
+                            width: 90%;
+                            a {
+                                color: #0c396e;
+                            }
+                        }
+                    }
+                    .form__submit {
+                        width: 100%;
+                        margin-top: 1rem;
+                        padding: 0.75rem;
+                        background-color: #0c396e;
+                        color: #fff;
+                        border: none;
+                        border-radius: 10px;
+                    }
+                }
+            }
+        }
+    }
+}

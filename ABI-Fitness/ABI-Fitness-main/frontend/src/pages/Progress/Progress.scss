@@ -1,0 +1,99 @@
+.ProgressForm__wrapper {
+    .success-message {
+      background-color: #4BB543; // A pleasant green
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      margin: 20px 0;
+      text-align: center;
+      font-size: 16px;
+      font-weight: bold;
+    }
+    min-height: 100vh;
+    overflow: auto;
+    background-position: center center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .ProgressForm__content {
+        background-color: rgba(255, 255, 255, 0.8); 
+        border-radius: 10px;
+        padding: 2rem;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+        max-width: 800px; 
+
+        h1 {
+            color: #0c396e;
+            font-weight: 500;
+            font-size: 48px; 
+            margin-bottom: 1rem;
+        }
+
+        small {
+            display: block;
+            color: #696969;
+            margin-bottom: 2rem;
+        }
+
+        input, label {
+            display: block;
+            width: 100%;
+            margin-bottom: 1rem;
+        }
+
+        input[type="text"], input[type="number"], input[type="date"], input[type="checkbox"] {
+            padding: 0.75rem;
+            border-radius: 5px;
+            border: 1px solid #ccc; 
+            margin-top: 0.5rem;
+        }
+
+        .form-checkbox {
+            display: flex;
+            align-items: center;
+
+            input {
+                margin-right: 0.5rem;
+            }
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: #0c396e; 
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .ProgressForm__wrapper {
+        .ProgressForm__content {
+            padding: 1rem;
+            h1 {
+                font-size: 36px; 
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .ProgressForm__wrapper {
+        .ProgressForm__content {
+            h1 {
+                font-size: 30px;
+            }
+
+            .submit-btn {
+                padding: 0.5rem;
+            }
+        }
+    }
+}

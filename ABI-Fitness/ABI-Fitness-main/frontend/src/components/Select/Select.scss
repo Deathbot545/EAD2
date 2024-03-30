@@ -1,0 +1,30 @@
+.Select__wrapper {
+    width: 100%;
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 1rem;
+    label {
+        font-size: 16px;
+        color: #323232;
+        font-weight: 800;
+    }
+    select {
+        width: 100%;
+        padding: 1rem;
+        background-color: #f3f3f3;
+        border-radius: 10px;
+        border: 1px solid #323232;
+        margin-top: 0.25rem;
+        color: #696969;
+    }
+}
+@media screen and (max-width: 500px) {
+    .Select__wrapper {
+        label {
+            font-size: 12px;
+        }
+      
+    }
+}

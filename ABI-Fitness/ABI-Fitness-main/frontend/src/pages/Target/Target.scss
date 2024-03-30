@@ -1,0 +1,111 @@
+.Target__wrapper {
+    h1 {
+        color: #0c396e;
+        font-weight: bold;
+        text-transform: uppercase;
+        line-height: 1rem;
+    }
+    small {
+        color: #696969;
+    }
+    .Target {
+        .card {
+            border: 1px solid #000;
+            background-color: transparent;
+            margin: 3rem 0 10rem 0;
+            .card-body {
+                background-color: transparent;
+                section {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 90%;
+                    overflow: hidden;
+                    .Target__input {
+                        width: 70%;
+                    }
+                    span {
+                        width: 30%;
+                        font-size: 20px;
+                        font-weight: 600;
+                    }
+                }
+            }
+            h4 {
+                margin-left: 1rem;
+                color: #696969;
+                button {
+                    color: #696969;
+                    font-weight: 800;
+                    border: 0;
+                    outline: none;
+                    background-color: transparent;
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .Target {
+        .card {
+            .card-body {
+                section {
+                    width: 100%;
+                }
+            }
+            h4 {
+                font-size: 20px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .Target {
+        .card {
+            .card-body {
+                section {
+                    width: 100%;
+                    overflow: visible;
+                }
+                span {
+                    width: 420px;
+                    font-size: 18px;
+                }
+            }
+            h4 {
+                font-size: 16px;
+            }
+        }
+    }
+}
+.success-message {
+    background-color: #4CAF50; /* Green background */
+    color: white; /* White text */
+    padding: 10px; /* Some padding */
+    margin: 20px 0; /* Some space above and below */
+    text-align: center; /* Centered text */
+    border-radius: 4px; /* Rounded corners */
+  }
+  .save-target-btn {
+    background-color: #6941c6; // A consistent purple color to match your dashboard's theme
+    color: white; // White text for better readability
+    padding: 10px 20px; // Adequate padding for a better look
+    border: none; // Remove the default border
+    border-radius: 5px; // Rounded corners for a modern look
+    font-weight: bold; // Bold text for emphasis
+    cursor: pointer; // Cursor pointer to indicate it's clickable
+    transition: background-color 0.3s; // Smooth transition for background color on hover
+  
+    &:hover {
+      background-color: #5a37b7; // A slightly darker purple on hover for a subtle effect
+    }
+  
+    &:focus {
+      outline: none; // Remove outline on focus for a cleaner appearance
+      box-shadow: 0 0 0 2px rgba(105, 65, 198, 0.5); // Add a soft glow effect on focus for better accessibility
+    }
+  }
+    
